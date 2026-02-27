@@ -9,6 +9,11 @@ description = "Zero-player LLM Arena MVP core engine"
 requires-python = ">=3.11"
 dependencies = []
 
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2,<10",
+]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]

@@ -28,7 +28,7 @@ scripts/github/bootstrap_labels.sh OWNER/REPO
 scripts/github/bootstrap_project.sh @me "Arena MVP Backlog" OWNER/REPO
 ```
 Скрипт создаст поля:
-- `Status` (`Inbox`, `Ready`, `In Progress`, `In Review`, `Blocked`, `Done`)
+- `Status` (`Inbox`, `Ready`, `In Progress`, `In Review`, `Needs Human`, `Blocked`, `Done`)
 - `Priority` (`P0..P3`)
 - `Epic`, `Stream`, `Size`, `Agent`
 
@@ -71,8 +71,9 @@ scripts/github/create_issue.sh \
 2. Перевести готовые задачи в `status:ready`.
 3. Выбрать 1-2 WP в `in-progress` (не больше для solo).
 4. Работать строго по TDD (RED -> GREEN -> REFACTOR).
-5. На PR переводить задачу в `review`.
-6. После merge закрывать issue (попадает в `done`).
+5. Если нужен ответ человека, переводить задачу в `Needs Human`, а не в `Blocked`.
+6. На PR переводить задачу в `review`.
+7. После merge закрывать issue (попадает в `done`).
 
 ## 4) Как мне (агенту) делегировать создание багов
 Когда в ходе работы найден дефект, агент должен:
@@ -90,10 +91,11 @@ scripts/github/create_issue.sh \
 ## 6) Рекомендуемые фильтры в Project
 - `My Focus`: `Status in (Ready, In Progress)` and `Priority in (P0, P1)`
 - `Blocked`: `Status = Blocked`
+- `Needs Human`: `Status = Needs Human`
 - `Bugs`: `label:type:bug`
 - `Engine`: `label:area:engine`
 - `Current Milestone`: `Stream in (E4, E5, E6)`
 
 ## 7) Правило WIP
 - В работе одновременно не больше 2 issues.
-- Новая задача стартует только после закрытия/блокировки одной из текущих.
+- Новая задача стартует только после того, как одна из текущих вышла из `In Progress` (`Done`, `Blocked`, `Needs Human` или `In Review`).

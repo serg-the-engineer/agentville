@@ -11,7 +11,7 @@ Usage:
     [--project-title "Arena MVP Backlog"] \
     [--priority <p0|p1|p2|p3>] \
     [--area <engine|setup|llm|api|runner|ws|db|ui|docs|ci>] \
-    [--status <triage|ready|in-progress|blocked|review>] \
+    [--status <triage|ready|in-progress|needs-human|blocked|review>] \
     [--label custom]...
 
 Repo resolution order:

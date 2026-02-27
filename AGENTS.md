@@ -4,9 +4,9 @@
 Основа подхода: [Harness Engineering](https://openai.com/index/harness-engineering/).
 
 ## 1) Что читать первым
-1. `PRD.md` — продуктовые правила матча.
-2. `ARCHITECTURE.md` — исполнимая архитектура MVP.
-3. `docs/EPICS_PLAN.md` — епики и зависимости.
+1. `PRD.md` — продуктовые правила сервиса.
+2. `docs/ARCHITECTURE.md` — исполнимая архитектура MVP.
+3. `docs/AGENT_DECISIONS.md` — журнал самостоятельных решений агента.
 4. `docs/AGENT_DELIVERY_FRAMEWORK.md` — как делить работу между агентами.
 5. `docs/QUALITY_AND_DOD.md` — TDD, quality gates, DoR/DoD.
 6. `docs/GIT_WORKFLOW.md` — правила веток, PR и merge.
@@ -17,8 +17,8 @@
 - `tests/` — unit/integration тесты.
 
 ## 3) Базовые команды
-- Запуск тестов: `uv run --with pytest pytest -q`
-- Поиск по коду: `rg "<pattern>" src tests`
+- Подготовка окружения: `uv sync --dev`
+- Запуск тестов: `uv run pytest -q`
 
 ## 4) Обязательные правила разработки
 - Только TDD: сначала тест (`RED`), затем минимальная реализация (`GREEN`), затем рефакторинг (`REFACTOR`).

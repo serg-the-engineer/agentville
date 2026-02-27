@@ -68,6 +68,6 @@
 - При конфликте контрактов приоритет у contract PR.
 
 ## 10) Минимальный операционный ритм
-- Ежедневно: статус по каждому WP (done/in-progress/blocked).
+- Ежедневно: статус по каждому WP (`Done` / `In Progress` / `In Review` / `Needs Human` / `Blocked`).
 - Каждые 2 дня: интеграционный sync по зависимостям.
 - Еженедельно: hygiene-сессия (stale branches, TODO debt, docs drift).

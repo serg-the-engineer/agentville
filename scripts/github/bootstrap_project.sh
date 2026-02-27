@@ -44,7 +44,7 @@ create_field() {
   echo "field: $name"
 }
 
-create_field "Status" "SINGLE_SELECT" "Inbox,Ready,In Progress,In Review,Blocked,Done"
+create_field "Status" "SINGLE_SELECT" "Inbox,Ready,In Progress,In Review,Needs Human,Blocked,Done"
 create_field "Priority" "SINGLE_SELECT" "P0,P1,P2,P3"
 create_field "Epic" "TEXT"
 create_field "Stream" "SINGLE_SELECT" "E1,E2,E3,E4,E5,E6,E7,E8,E9,E10"

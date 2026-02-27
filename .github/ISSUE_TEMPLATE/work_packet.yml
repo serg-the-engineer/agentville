@@ -80,7 +80,7 @@ body:
       label: Validation Commands
       description: Commands that must pass
       placeholder: |
-        uv run --with pytest pytest -q
+        uv run pytest -q
     validations:
       required: true
 

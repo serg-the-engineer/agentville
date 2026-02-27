@@ -16,13 +16,13 @@
 
 ## Test Plan
 - Commands run:
-  - `uv run --with pytest pytest -q`
+  - `uv run pytest -q`
 - Results summary:
 
 ## Contract / Docs Impact
 - [ ] No public contract changes
 - [ ] Updated contracts/schemas
-- [ ] Updated docs (`PRD.md` / `ARCHITECTURE.md` / `docs/*`) as needed
+- [ ] Updated docs (`PRD.md` / `docs/ARCHITECTURE.md` / `docs/*`) as needed
 
 ## Risk & Rollback
 - Main risks:
