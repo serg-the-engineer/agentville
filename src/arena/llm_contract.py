@@ -7,6 +7,29 @@ from arena.enums import ActionType
 from arena.models import Action
 
 
+def _action_variant_schema(
+    action_type: ActionType,
+    *,
+    required_fields: tuple[str, ...] = (),
+) -> dict[str, Any]:
+    properties: dict[str, Any] = {
+        "type": {"const": action_type.value},
+    }
+    if "target_agent_id" in required_fields:
+        properties["target_agent_id"] = {"type": "string"}
+    if "item_id" in required_fields:
+        properties["item_id"] = {"type": "string"}
+    if "text" in required_fields:
+        properties["text"] = {"type": "string"}
+
+    return {
+        "type": "object",
+        "required": ["type", *required_fields],
+        "additionalProperties": False,
+        "properties": properties,
+    }
+
+
 ACTION_JSON_SCHEMA: dict[str, Any] = {
     "type": "object",
     "required": ["actions", "memory_file"],
@@ -15,15 +38,38 @@ ACTION_JSON_SCHEMA: dict[str, Any] = {
         "actions": {
             "type": "array",
             "items": {
-                "type": "object",
-                "required": ["type"],
-                "additionalProperties": False,
-                "properties": {
-                    "type": {"type": "string"},
-                    "target_agent_id": {"type": "string"},
-                    "item_id": {"type": "string"},
-                    "text": {"type": "string"},
-                },
+                "oneOf": [
+                    _action_variant_schema(ActionType.DEFEND),
+                    _action_variant_schema(
+                        ActionType.ATTACK,
+                        required_fields=("target_agent_id",),
+                    ),
+                    _action_variant_schema(
+                        ActionType.STEAL,
+                        required_fields=("target_agent_id",),
+                    ),
+                    _action_variant_schema(ActionType.SEARCH),
+                    _action_variant_schema(
+                        ActionType.INSPECT_ITEM,
+                        required_fields=("item_id",),
+                    ),
+                    _action_variant_schema(
+                        ActionType.ACTIVATE_ITEM,
+                        required_fields=("item_id",),
+                    ),
+                    _action_variant_schema(
+                        ActionType.DROP_ITEM,
+                        required_fields=("item_id",),
+                    ),
+                    _action_variant_schema(
+                        ActionType.PICKUP_ITEM,
+                        required_fields=("item_id",),
+                    ),
+                    _action_variant_schema(
+                        ActionType.BROADCAST,
+                        required_fields=("text",),
+                    ),
+                ]
             },
         },
         "memory_file": {"type": "string"},
