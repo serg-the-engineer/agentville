@@ -1,0 +1,96 @@
+name: Work Packet
+description: Create a delegable implementation unit for an agent
+title: "[WP]: "
+labels:
+  - "type:feature"
+  - "status:triage"
+body:
+  - type: input
+    id: wp_id
+    attributes:
+      label: WP-ID
+      description: Work packet id (e.g. E4-WP2)
+      placeholder: E4-WP2
+    validations:
+      required: true
+
+  - type: input
+    id: epic
+    attributes:
+      label: Epic Link
+      description: Parent epic issue number or link
+      placeholder: "#42"
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What concrete outcome should this packet deliver?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope (In/Out)
+      description: Boundaries to avoid overlap with other agents
+      placeholder: |
+        In scope:
+        - ...
+        Out of scope:
+        - ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: touched_contracts
+    attributes:
+      label: Touched Contracts
+      description: API/schema/events/types being modified
+      placeholder: |
+        - event_type: ...
+        - API DTO: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: tests_first
+    attributes:
+      label: Tests First (TDD)
+      description: List tests that must be created before implementation
+      placeholder: |
+        - [ ] unit: ...
+        - [ ] integration: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: Expected files/modules/artifacts
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation Commands
+      description: Commands that must pass
+      placeholder: |
+        uv run --with pytest pytest -q
+    validations:
+      required: true
+
+  - type: textarea
+    id: exit_criteria
+    attributes:
+      label: Exit Criteria
+      description: Conditions for closing this packet
+      placeholder: |
+        - [ ] Criteria 1
+        - [ ] Criteria 2
+    validations:
+      required: true

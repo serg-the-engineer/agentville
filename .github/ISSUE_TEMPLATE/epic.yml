@@ -1,0 +1,59 @@
+name: Epic
+description: Create an epic with measurable outcome and dependencies
+title: "[Epic]: "
+labels:
+  - "type:epic"
+  - "status:triage"
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What outcome must be achieved?
+      placeholder: Deliver X capability to achieve Y business result.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What is in scope and out of scope?
+      placeholder: |
+        In scope:
+        - ...
+        Out of scope:
+        - ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Which other epics or issues block this work?
+      placeholder: "Depends on: #123, #124"
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: Verifiable criteria for epic completion
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks
+      description: Key risks and mitigation plan
+      placeholder: |
+        Risk:
+        Mitigation:
+    validations:
+      required: false
