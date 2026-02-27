@@ -1,0 +1,43 @@
+name: Hourly Task Loop
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run without mutating issues"
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run hourly task loop
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          STALE_HOURS: "6"
+          BLOCK_AFTER_HOURS: "24"
+          WIP_LIMIT: "2"
+          WP_BATCH_SIZE: "2"
+          MAX_WP_PER_EPIC: "3"
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.dry_run }}" == "true" ]]; then
+            export DRY_RUN=1
+          else
+            export DRY_RUN=0
+          fi
+
+          chmod +x scripts/github/hourly_task_loop.sh
+          scripts/github/hourly_task_loop.sh "$GH_REPO"
