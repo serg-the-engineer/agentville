@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pyre/
 
 # Virtual environments
 .venv/
@@ -12,6 +13,8 @@ venv/
 .coverage
 .coverage.*
 htmlcov/
+.tox/
+.nox/
 
 # Build artifacts
 build/
@@ -19,6 +22,7 @@ dist/
 *.egg-info/
 
 # Tool caches
+.cache/
 .mypy_cache/
 .ruff_cache/
 .hypothesis/
@@ -27,3 +31,8 @@ dist/
 .DS_Store
 .idea/
 .vscode/
+*.swp
+*.swo
+*.tmp
+*.log
+*.orig
