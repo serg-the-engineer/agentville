@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "llm-arena-mvp"
+name = "agentville"
 version = "0.1.0"
 description = "Zero-player LLM Arena MVP core engine"
 requires-python = ">=3.11"
